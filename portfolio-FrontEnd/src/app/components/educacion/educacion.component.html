@@ -1,27 +1,31 @@
 <div class="row">
     <h1>Educacion</h1>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-        <ul>
-            <li>
-                <h2>.Net</h2> - <h3>(6 meses)</h3>
-            </li>
-            <p>Hice una pasantia que adquiri conocimientos basicos en la UTN</p>
-        </ul>
-
-        <ul>
-            <li>
-                <h2>Java</h2> - <h3>(8 meses)</h3>
-            </li>
-            <p>Estuve haciendo unas materias en java en la universidad de la UTN, adquiri conocimientos hasta orientacion con objetos</p>
-        </ul>
-
-        <ul>
-            <li>
-                <h2>C++</h2> - <h3>(4 meses)</h3>
-            </li>
-            <p>Fue mi primer lenguaje de programacion, donde aprendi a conocer las variables, consolas y demas.</p>
-        </ul>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark" routerLink="/nuevaedu" *ngIf="isLogged">
+            Agregar Educacion
+        </button>
     </div>
-</div>
 
+    <div class="col lg 1"></div>
+    <div class="col-lg-11">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let Educacion of educacion">
+                    <td>
+                        <h2>{{Educacion.nombreE}}</h2>
+                    </td>
+                    <td>{{Educacion.descripcionE}}</td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-light" routerLink="/editedu/{{Educacion.id}}">
+                            <i class="bi bi-pencil-fill"></i> Editar</button>
+                    </td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-danger" (click)="delete(Educacion.id)">
+                            <i class="bi bi-trash-fill"></i> Borrar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
